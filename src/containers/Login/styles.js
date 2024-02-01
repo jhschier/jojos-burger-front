@@ -62,22 +62,44 @@ export const Label = styled.p`
 
 export const Input = styled.input`
   height: 38px;
-
   margin-top: 15px;
   margin-bottom: 25px;
   border-radius: 5px;
+  border: none;
+  padding-left: 5px;
 `
 
 export const Button = styled.button`
+  background-color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
   margin-top: 67px;
   margin-bottom: 29px;
   width: 180px;
   height: 36px;
   border-radius: 15px;
   align-self: center;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:active {
+    opacity: 0.6;
+  }
 `
 
 export const SignInLink = styled.p`
   color: #ffffff;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
   align-self: center;
+
+  a {
+    cursor: pointer;
+    text-decoration: underline;
+  }
 `
