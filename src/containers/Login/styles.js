@@ -19,7 +19,7 @@ export const ContainerItems = styled.div`
   background: #000000;
   height: 100vh;
   width: 50vw;
-  padding: 25px 230px;
+  padding: 1.5625rem 230px;
 
   display: flex;
   flex-direction: column;
@@ -31,54 +31,54 @@ export const H1Login = styled.p`
   text-align: center;
 
   font-family: Roboto;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin-top: 100px;
-  margin-bottom: 16px;
+  margin-top: 6.25rem;
+  margin-bottom: 1rem;
 `
 
 export const HeaderName = styled.h2`
   font-family: 'Merienda', cursive;
-  font-size: 50px;
+  font-size: 3.125rem;
   text-align: center;
   color: #ffffff;
 `
 
 export const HeaderBurger = styled.h1`
   font-family: 'Merienda', cursive;
-  font-size: 70px;
+  font-size: 4.375rem;
   text-align: center;
   color: #ffffff;
 `
 
 export const Label = styled.p`
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 500;
   color: #ffffff;
-  line-height: 14px;
+  line-height: 0.875rem;
 `
 
 export const Input = styled.input`
-  height: 38px;
-  margin-top: 15px;
-  margin-bottom: 25px;
-  border-radius: 5px;
+  height: 2.375rem;
+  margin-top: 0.9375rem;
+  margin-bottom: 1.5625rem;
+  border-radius: 0.3125rem;
   border: none;
-  padding-left: 5px;
+  padding-left: 0.3125rem;
 `
 
 export const Button = styled.button`
   background-color: #ffffff;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 500;
   font-style: normal;
-  margin-top: 67px;
-  margin-bottom: 29px;
-  width: 180px;
-  height: 36px;
-  border-radius: 15px;
+  margin-top: 4.1875rem;
+  margin-bottom: 1.8125rem;
+  width: 11.25rem;
+  height: 2.25rem;
+  border-radius: 0.9375rem;
   align-self: center;
   border: none;
   cursor: pointer;
@@ -95,7 +95,7 @@ export const SignInLink = styled.p`
   color: #ffffff;
   font-style: normal;
   font-weight: 300;
-  font-size: 14px;
+  font-size: 0.875rem;
   align-self: center;
 
   a {
