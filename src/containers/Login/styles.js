@@ -24,7 +24,14 @@ export const ContainerItems = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  form {
+    display: flex;
+    flex-direction: column;
+  }
 `
+
+export const JoJosLogo = styled.img``
 
 export const H1Login = styled.p`
   color: #fff;
@@ -41,7 +48,7 @@ export const H1Login = styled.p`
 
 export const HeaderName = styled.h2`
   font-family: 'Merienda', cursive;
-  font-size: 3.125rem;
+  font-size: 50px;
   text-align: center;
   color: #ffffff;
 `
