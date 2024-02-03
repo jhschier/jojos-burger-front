@@ -30,6 +30,13 @@ export const ContainerItems = styled.div`
     flex-direction: column;
   }
 `
+export const ErrorMessage = styled.p`
+  color: #cc1717;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.875rem;
+  margin-bottom: 0.625rem;
+`
 
 export const JoJosLogo = styled.img``
 
@@ -69,10 +76,10 @@ export const Label = styled.p`
 
 export const Input = styled.input`
   height: 2.375rem;
-  margin-top: 0.9375rem;
-  margin-bottom: 1.5625rem;
+  margin-top: 0.3125rem;
+  margin-bottom: 0.3125rem;
   border-radius: 0.3125rem;
-  border: none;
+  border: ${props => (props.error ? '1px solid #cc1717' : 'none')};
   padding-left: 0.3125rem;
 `
 

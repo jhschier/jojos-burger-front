@@ -1,5 +1,7 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import * as Yup from 'yup'
 
 import LoginImg from '../../assets/login-body.svg'
 import {
@@ -11,16 +13,23 @@ import {
   H1Login,
   Label,
   Input,
+  ErrorMessage,
   Button,
   SignInLink
 } from './styles'
 
 function Login() {
+  const schema = Yup.object().shape({
+    email: Yup.string()
+      .email('Please inform a valid e-mail.')
+      .required('The e-email is required.'),
+    password: Yup.string().required('The password is required.')
+  })
   const {
     register,
     handleSubmit,
     formState: { errors }
-  } = useForm()
+  } = useForm({ resolver: yupResolver(schema) })
 
   const onSubmit = data => console.log(data)
   return (
@@ -32,12 +41,22 @@ function Login() {
         <HeaderBurger>Burger</HeaderBurger>
 
         <H1Login>Login</H1Login>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form noValidate onSubmit={handleSubmit(onSubmit)}>
           <Label>Email</Label>
-          <Input type="email" {...register('email')} />
+          <Input
+            type="email"
+            {...register('email')}
+            error={errors.email?.message}
+          />
+          <ErrorMessage>{errors.email?.message}</ErrorMessage>
 
           <Label>Password</Label>
-          <Input type="password" {...register('password')} />
+          <Input
+            type="password"
+            {...register('password')}
+            error="errors.password?.message"
+          />
+          <ErrorMessage>{errors.password?.message}</ErrorMessage>
 
           <Button>Sign In</Button>
         </form>
