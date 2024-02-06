@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import * as Yup from 'yup'
 
 import LoginImg from '../../assets/login-body.svg'
+import Button from '../../components/Button'
 import api from '../../services/api'
 import {
   LoginImage,
@@ -15,7 +16,6 @@ import {
   Label,
   Input,
   ErrorMessage,
-  Button,
   SignInLink
 } from './styles'
 
@@ -65,7 +65,12 @@ function Login() {
           />
           <ErrorMessage>{errors.password?.message}</ErrorMessage>
 
-          <Button>Sign In</Button>
+          <Button
+            type="submit"
+            style={{ marginTop: '4.1875rem', marginBottom: '1.8125rem' }}
+          >
+            Sign In
+          </Button>
         </form>
         <SignInLink>
           Don&apos;t have an account? <a>Sign Up!</a>{' '}
