@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { toast, Bounce } from 'react-toastify'
 import * as Yup from 'yup'
 
 import LoginImg from '../../assets/login-body.svg'
@@ -33,11 +34,56 @@ function Login() {
   } = useForm({ resolver: yupResolver(schema) })
 
   const onSubmit = async clientData => {
-    const response = await api.post('sessions', {
-      email: clientData.email,
-      password: clientData.password
-    })
-    console.log(response)
+    try {
+      const { status } = await api.post(
+        'sessions',
+        {
+          email: clientData.email,
+          password: clientData.password
+        },
+        {
+          validateStatus: () => true
+        }
+      )
+      if (status === 200 || status === 201) {
+        toast.success('Welcome! :)', {
+          position: 'top-center',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark',
+          transition: Bounce
+        })
+      } else if (status === 401) {
+        toast.error('Incorrect e-mail or password.', {
+          position: 'top-center',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark',
+          transition: Bounce
+        })
+      } else {
+        throw new Error()
+      }
+    } catch (err) {
+      toast.error('An error has occurred. Please try again later.', {
+        position: 'top-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+        transition: Bounce
+      })
+    }
   }
   return (
     <Container>

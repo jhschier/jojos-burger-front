@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { toast, Bounce } from 'react-toastify'
 import * as Yup from 'yup'
 
 import RegisterImg from '../../assets/signup-body.svg'
@@ -27,7 +28,9 @@ function Register() {
     email: Yup.string()
       .email('Please inform a valid e-mail.')
       .required('The e-email is required.'),
-    password: Yup.string().required('The password is required.'),
+    password: Yup.string()
+      .min(6, 'The password must contain at least 6 characters.')
+      .required('The password is required.'),
     confirmPassword: Yup.string()
       .required('You must confirm your password.')
       .oneOf([Yup.ref('password')], 'The passwords must match.')
@@ -39,13 +42,55 @@ function Register() {
   } = useForm({ resolver: yupResolver(schema) })
 
   const onSubmit = async clientData => {
-    const response = await api.post('users', {
-      name: clientData.name,
-      email: clientData.email,
-      password: clientData.password,
-      confirmPassword: clientData.confirmPassword
-    })
-    console.log(response)
+    try {
+      const { status } = await api.post(
+        'users',
+        {
+          name: clientData.name,
+          email: clientData.email,
+          password: clientData.password,
+          confirmPassword: clientData.confirmPassword
+        },
+        { validateStatus: () => true }
+      )
+
+      if (status === 200 || status === 201) {
+        toast.success('Signed up successfully!', {
+          position: 'top-center',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark',
+          transition: Bounce
+        })
+      } else if (status === 409) {
+        toast.error('This e-mail is already in use!', {
+          position: 'top-center',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          draggable: true,
+          progress: undefined,
+          theme: 'dark',
+          transition: Bounce
+        })
+      } else {
+        throw new Error()
+      }
+    } catch (err) {
+      toast.error('An error occurred. Please try again later.', {
+        position: 'top-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+        transition: Bounce
+      })
+    }
   }
   return (
     <Container>
