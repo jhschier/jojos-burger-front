@@ -24,6 +24,8 @@ import {
 function Login() {
   const { userData, putUserData } = useUser()
 
+  console.log(userData)
+
   const schema = Yup.object().shape({
     email: Yup.string()
       .email('Please inform a valid e-mail.')
@@ -89,7 +91,6 @@ function Login() {
         transition: Bounce
       })
     }
-    console.log(userData)
   }
 
   return (
