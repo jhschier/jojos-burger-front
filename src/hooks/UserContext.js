@@ -1,14 +1,17 @@
 import PropTypes from 'prop-types'
-import React, { createContext, useContext } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 
 const UserContext = createContext({})
 
 export const UserProvider = ({ children }) => {
-  const user = { name: 'JowJow', age: 27 }
-  const otherUser = { name: 'Luana', age: 23 }
+  const [userData, setUserData] = useState({})
+
+  const putUserData = userInfo => {
+    setUserData(userInfo)
+  }
 
   return (
-    <UserContext.Provider value={{ user, otherUser }}>
+    <UserContext.Provider value={{ putUserData, userData }}>
       {children}
     </UserContext.Provider>
   )

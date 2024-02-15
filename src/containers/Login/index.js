@@ -22,8 +22,8 @@ import {
 } from './styles'
 
 function Login() {
-  const users = useUser()
-  console.log(users)
+  const { userData, putUserData } = useUser()
+
   const schema = Yup.object().shape({
     email: Yup.string()
       .email('Please inform a valid e-mail.')
@@ -38,7 +38,7 @@ function Login() {
 
   const onSubmit = async clientData => {
     try {
-      const { status } = await api.post(
+      const { status, data } = await api.post(
         'sessions',
         {
           email: clientData.email,
@@ -48,6 +48,7 @@ function Login() {
           validateStatus: () => true
         }
       )
+
       if (status === 200 || status === 201) {
         toast.success('Welcome! :)', {
           position: 'top-center',
@@ -74,6 +75,7 @@ function Login() {
       } else {
         throw new Error()
       }
+      putUserData(data)
     } catch (err) {
       toast.error('An error has occurred. Please try again later.', {
         position: 'top-center',
@@ -87,7 +89,9 @@ function Login() {
         transition: Bounce
       })
     }
+    console.log(userData)
   }
+
   return (
     <Container>
       <LoginImage src={LoginImg} alt="login-image" />
