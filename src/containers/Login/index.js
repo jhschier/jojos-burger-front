@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { toast, Bounce } from 'react-toastify'
 import * as Yup from 'yup'
 
@@ -23,9 +23,8 @@ import {
 } from './styles'
 
 function Login() {
-  const { userData, putUserData } = useUser()
-
-  console.log(userData)
+  const { putUserData } = useUser()
+  const history = useHistory()
 
   const schema = Yup.object().shape({
     email: Yup.string()
@@ -79,6 +78,10 @@ function Login() {
         throw new Error()
       }
       putUserData(data)
+
+      setInterval(() => {
+        history.push('/')
+      }, 1500)
     } catch (err) {
       toast.error('An error has occurred. Please try again later.', {
         position: 'top-center',
