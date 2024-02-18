@@ -2,6 +2,6 @@ import styled from 'styled-components'
 
 export const Container = styled.div``
 
-export const HomeCoverImg = styled.img`
+export const CoverImg = styled.img`
   width: 100%;
 `

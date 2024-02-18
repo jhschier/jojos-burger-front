@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { toast, Bounce } from 'react-toastify'
 import * as Yup from 'yup'
 
+import bgHome from '../../assets/bg-home.jpg'
 import RegisterImg from '../../assets/signup-body.svg'
 import Button from '../../components/Button'
 import api from '../../services/api'
@@ -97,10 +98,16 @@ function Register() {
     <Container>
       <RegisterImage src={RegisterImg} alt="login-image" />
 
-      <ContainerItems>
+      <ContainerItems
+        style={{
+          backgroundImage: `url(${bgHome})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
         <HeaderName>JoJo&apos;s</HeaderName>
         <HeaderBurger>Burger</HeaderBurger>
-
         <H1Login>Register</H1Login>
         <form noValidate onSubmit={handleSubmit(onSubmit)}>
           <Label>Name</Label>

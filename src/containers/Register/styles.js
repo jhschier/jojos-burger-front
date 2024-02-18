@@ -41,7 +41,7 @@ export const ErrorMessage = styled.p`
 export const JoJosLogo = styled.img``
 
 export const H1Login = styled.p`
-  color: #fff;
+  color: #fbeee0;
   text-align: center;
 
   font-family: Roboto;
@@ -57,25 +57,27 @@ export const HeaderName = styled.h2`
   font-family: 'Merienda', cursive;
   font-size: 50px;
   text-align: center;
-  color: #ffffff;
+  color: #fbeee0;
 `
 
 export const HeaderBurger = styled.h1`
   font-family: 'Merienda', cursive;
   font-size: 4.375rem;
   text-align: center;
-  color: #ffffff;
+  color: #fbeee0;
 `
 
 export const Label = styled.p`
   font-size: 0.75rem;
+
   font-weight: 500;
-  color: #ffffff;
+  color: #fbeee0;
   line-height: 0.875rem;
 `
 
 export const Input = styled.input`
   height: 2.375rem;
+  background-color: #fbeee0;
   margin-top: 0.3125rem;
   margin-bottom: 0.3125rem;
   border-radius: 0.3125rem;

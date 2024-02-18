@@ -4,21 +4,24 @@ import Carousel from 'react-elastic-carousel'
 import api from '../../services/api'
 import {
   Container,
-  H2Categories,
+  H2Offers,
   ContainerItems,
   Image,
-  Button
+  Button,
+  OfferP
 } from './styles'
 
-function CategoryCarousel() {
-  const [categories, setCategories] = useState([])
+function OffersCarousel() {
+  const [offers, setOffers] = useState([])
 
   useEffect(() => {
-    async function loadCategories() {
-      const { data } = await api.get('categories')
-      setCategories(data)
+    async function loadOffers() {
+      const { data } = await api.get('products')
+
+      const onlyOffers = data.filter(product => product.offer)
+      setOffers(onlyOffers)
     }
-    loadCategories()
+    loadOffers()
   }, [])
 
   const breakPoints = [
@@ -30,17 +33,19 @@ function CategoryCarousel() {
   ]
   return (
     <Container>
-      <H2Categories>Categories</H2Categories>
+      <H2Offers>Offers</H2Offers>
       <Carousel
         itemsToShow={5}
         style={{ width: '90%' }}
         breakPoints={breakPoints}
       >
-        {categories &&
-          categories.map(category => (
-            <ContainerItems key={category.id}>
-              <Image src={category.url} alt="category-image" />
-              <Button>{category.name}</Button>
+        {offers &&
+          offers.map(product => (
+            <ContainerItems key={product.id}>
+              <Image src={product.url} alt="product-image" />
+              <OfferP>{product.name}</OfferP>
+              <OfferP>{product.price}</OfferP>
+              <Button>Order Now!</Button>
             </ContainerItems>
           ))}
       </Carousel>
@@ -48,4 +53,4 @@ function CategoryCarousel() {
   )
 }
 
-export default CategoryCarousel
+export default OffersCarousel

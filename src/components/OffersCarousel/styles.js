@@ -19,6 +19,7 @@ export const Container = styled.div`
   .rec.rec-arrow:disabled {
     visibility: hidden;
   }
+
   .rec.rec-pagination {
     visibility: hidden;
   }
@@ -75,9 +76,17 @@ export const Button = styled.button`
   }
 `
 
-export const H2Categories = styled.h2`
+export const H2Offers = styled.h2`
   font-family: 'Merienda', cursive;
   font-size: 50px;
+  margin: 10px;
+  text-align: center;
+  color: #fbeee0;
+`
+
+export const OfferP = styled.p`
+  font-family: 'Merienda', cursive;
+  font-size: 15px;
   margin: 10px;
   text-align: center;
   color: #fbeee0;

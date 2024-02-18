@@ -5,6 +5,7 @@ import { Link, useHistory } from 'react-router-dom'
 import { toast, Bounce } from 'react-toastify'
 import * as Yup from 'yup'
 
+import bgHome from '../../assets/bg-home.jpg'
 import LoginImg from '../../assets/login-body.svg'
 import Button from '../../components/Button'
 import { useUser } from '../../hooks/UserContext'
@@ -101,7 +102,14 @@ function Login() {
     <Container>
       <LoginImage src={LoginImg} alt="login-image" />
 
-      <ContainerItems>
+      <ContainerItems
+        style={{
+          backgroundImage: `url(${bgHome})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
         <HeaderName>JoJo&apos;s</HeaderName>
         <HeaderBurger>Burger</HeaderBurger>
 
