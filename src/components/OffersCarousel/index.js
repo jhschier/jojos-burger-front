@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Carousel from 'react-elastic-carousel'
 
 import api from '../../services/api'
+import formatCurrency from '../../utils/formatCurrency'
 import {
   Container,
   H2Offers,
@@ -18,7 +19,11 @@ function OffersCarousel() {
     async function loadOffers() {
       const { data } = await api.get('products')
 
-      const onlyOffers = data.filter(product => product.offer)
+      const onlyOffers = data
+        .filter(product => product.offer)
+        .map(product => {
+          return { ...product, formatedPrice: formatCurrency(product.price) }
+        })
       setOffers(onlyOffers)
     }
     loadOffers()
@@ -44,7 +49,7 @@ function OffersCarousel() {
             <ContainerItems key={product.id}>
               <Image src={product.url} alt="product-image" />
               <OfferP>{product.name}</OfferP>
-              <OfferP>{product.price}</OfferP>
+              <OfferP>{product.formatedPrice}</OfferP>
               <Button>Order Now!</Button>
             </ContainerItems>
           ))}

@@ -41,7 +41,7 @@ export const ErrorMessage = styled.p`
 export const JoJosLogo = styled.img``
 
 export const H1Login = styled.p`
-  color: #fff;
+  color: #fbeee0;
   text-align: center;
 
   font-family: Roboto;
