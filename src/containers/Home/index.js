@@ -1,6 +1,6 @@
 import React from 'react'
 
-import HomeCover from '../../assets/home_cover.jpg'
+import HomeCover from '../../assets/homecover.jpg'
 import CategoryCarousel from '../../components/CategoryCarousel'
 import OffersCarousel from '../../components/OffersCarousel'
 import { Container, CoverImg } from './styles'
