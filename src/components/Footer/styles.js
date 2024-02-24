@@ -16,4 +16,5 @@ export const FooterText = styled.p`
   color: #fbeee0;
   display: flex;
   justify-content: center;
+  padding: 1px;
 `
