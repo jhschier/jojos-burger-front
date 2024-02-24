@@ -1,12 +1,10 @@
 import React from 'react'
 
 import HomeCover from '../../assets/homecover.jpg'
-import CategoryCarousel from '../../components/CategoryCarousel'
-import { Footer } from '../../components/Footer'
-import OffersCarousel from '../../components/OffersCarousel'
+import { CategoryCarousel, OffersCarousel, Footer } from '../../components'
 import { Container, CoverImg } from './styles'
 
-function Home() {
+export function Home() {
   return (
     <Container
       style={{
@@ -20,5 +18,3 @@ function Home() {
     </Container>
   )
 }
-
-export default Home

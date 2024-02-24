@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import ProductsCover from '../../assets/productsCover.jpg'
-import CardProduct from '../../components/CardProduct'
-import { Footer } from '../../components/Footer'
+import { CardProduct, Footer } from '../../components'
 import api from '../../services/api'
 import formatCurrency from '../../utils/formatCurrency'
 import {
@@ -13,7 +12,7 @@ import {
   ContainerProducts
 } from './styles'
 
-function Products() {
+export function Products() {
   const [categories, setCategories] = useState([])
   const [products, setProducts] = useState([])
   const [filteredProducts, setFilteredProdutcs] = useState([])
@@ -84,5 +83,3 @@ function Products() {
     </Container>
   )
 }
-
-export default Products
