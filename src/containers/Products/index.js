@@ -52,11 +52,7 @@ export function Products() {
   }, [activeCategory, products])
 
   return (
-    <Container
-      style={{
-        backgroundColor: '#000000'
-      }}
-    >
+    <Container>
       <CoverImg src={ProductsCover} />
       <ContainerCategory>
         {categories &&

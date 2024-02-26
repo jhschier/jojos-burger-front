@@ -4,10 +4,8 @@ export const FooterContainer = styled.div`
   width: 100%;
   height: 20px;
   position: relative;
-  background-color: #080806;
   bottom: 0;
-
-  align-items: center;
+  background-color: #080806;
 `
 
 export const FooterText = styled.p`
