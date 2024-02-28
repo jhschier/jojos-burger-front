@@ -35,6 +35,17 @@ export const Body = styled.div`
     color: #422800;
     padding: 1px;
     margin-top: 3px;
+
+    button {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    img {
+      width: 25px;
+      margin-left: 40px;
+    }
   }
 
   .quantity-container {

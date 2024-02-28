@@ -1,5 +1,6 @@
 import React from 'react'
 
+import TrashCan from '../../assets/trash-icon.png'
 import { useCart } from '../../hooks/CartContext'
 import formatCurrency from '../../utils/formatCurrency'
 import {
@@ -12,10 +13,11 @@ import {
 } from './styles'
 
 export function CartItems() {
-  const { cartProducts } = useCart()
-  console.log(cartProducts)
+  const { cartProducts, increaseQuantity, decreaseQuantity, deleteProduct } =
+    useCart()
 
   const isCartEmpty = !cartProducts || cartProducts.length === 0
+
   return (
     <Container>
       {isCartEmpty ? null : (
@@ -39,11 +41,16 @@ export function CartItems() {
             <p>{product.name}</p>
             <p>{formatCurrency(product.price)}</p>
             <div className="quantity-container">
-              <button>-</button>
+              <button onClick={() => decreaseQuantity(product.id)}>-</button>
               <p>{product.quantity}</p>
-              <button>+</button>
+              <button onClick={() => increaseQuantity(product.id)}>+</button>
             </div>
-            <p>{formatCurrency(product.quantity * product.price)}</p>
+            <p>
+              {formatCurrency(product.quantity * product.price)}{' '}
+              <button onClick={() => deleteProduct(product.id)}>
+                <img src={TrashCan} />
+              </button>
+            </p>
           </Body>
         ))
       )}

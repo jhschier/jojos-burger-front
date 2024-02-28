@@ -26,6 +26,45 @@ export const CartProvider = ({ children }) => {
       JSON.stringify(newCartProducts)
     )
   }
+  const deleteProduct = async productId => {
+    const newCart = cartProducts.filter(product => product.id !== productId)
+
+    setCartProducts(newCart)
+
+    await localStorage.setItem('jojosburger:cartInfo', JSON.stringify(newCart))
+  }
+
+  const increaseQuantity = async productId => {
+    const newCart = cartProducts.map(product => {
+      return product.id === productId
+        ? { ...product, quantity: product.quantity + 1 }
+        : product
+    })
+
+    setCartProducts(newCart)
+
+    await localStorage.setItem('jojosburger:cartInfo', JSON.stringify(newCart))
+  }
+
+  const decreaseQuantity = async productId => {
+    const cartIndex = cartProducts.findIndex(
+      product => product.id === productId
+    )
+
+    if (cartProducts[cartIndex].quantity > 1) {
+      const newCart = cartProducts.map(product => {
+        return product.id === productId
+          ? { ...product, quantity: product.quantity - 1 }
+          : product
+      })
+      setCartProducts(newCart)
+
+      await localStorage.setItem(
+        'jojosburger:cartInfo',
+        JSON.stringify(newCart)
+      )
+    }
+  }
 
   useEffect(() => {
     const loadUserData = async () => {
@@ -39,7 +78,15 @@ export const CartProvider = ({ children }) => {
   }, [])
 
   return (
-    <CartContext.Provider value={{ putProductInCart, cartProducts }}>
+    <CartContext.Provider
+      value={{
+        putProductInCart,
+        cartProducts,
+        increaseQuantity,
+        decreaseQuantity,
+        deleteProduct
+      }}
+    >
       {children}
     </CartContext.Provider>
   )
