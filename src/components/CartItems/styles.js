@@ -1,27 +1,55 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  display: grid;
-  p {
-    font-family: 'Merienda', cursive;
-    font-size: 12px;
-    color: #fbeee0;
-    display: flex;
-    justify-content: center;
-    padding: 1px;
-  }
+  background-color: #ffffff;
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.03);
+  border-radius: 20px;
+  padding: 10px;
+  width: max-content;
 `
 
 export const Header = styled.div`
   display: grid;
-  flex-direction: row;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 10px;
+  border-bottom: 1px solid #fbeee0;
+
+  p {
+    font-family: 'Merienda', cursive;
+    font-size: 17px;
+    color: #422800;
+    padding: 1px;
+  }
 `
 
-export const Body = styled.div``
+export const Body = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 10px;
+
+  grid-gap: 10px 15px;
+
+  p {
+    font-family: 'Merienda', cursive;
+    font-size: 15px;
+    color: #422800;
+    padding: 1px;
+  }
+`
+
+export const ProductImage = styled.img`
+  width: 130px;
+  border-radius: 10px;
+`
 
 export const ImageContainer = styled.div`
-  max-width: 200px;
+  max-width: 130px;
 `
-export const ProductImage = styled.img`
-  width: 200px;
+export const EmptyCart = styled.p`
+  padding: 20px;
+  text-align: center;
+  font-family: 'Merienda', cursive;
+  font-size: 15px;
+  font-weight: bold;
+  color: #422800;
 `
