@@ -34,6 +34,20 @@ export const Body = styled.div`
     font-size: 15px;
     color: #422800;
     padding: 1px;
+    margin-top: 3px;
+  }
+
+  .quantity-container {
+    display: flex;
+    gap: 20px;
+
+    button {
+      height: 30px;
+      background: transparent;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+    }
   }
 `
 

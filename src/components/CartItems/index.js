@@ -23,7 +23,7 @@ export function CartItems() {
           <p></p>
           <p>Items</p>
           <p>Price</p>
-          <p style={{ paddingRight: 30 }}>Quantity</p>
+          <p style={{ paddingRight: 40 }}>Quantity</p>
           <p>Total</p>
         </Header>
       )}
@@ -37,9 +37,13 @@ export function CartItems() {
             </ImageContainer>
 
             <p>{product.name}</p>
-            <p>{product.price}</p>
-            <p>{product.quantity}</p>
-            <p>{product.quantity * product.price}</p>
+            <p>{formatCurrency(product.price)}</p>
+            <div className="quantity-container">
+              <button>-</button>
+              <p>{product.quantity}</p>
+              <button>+</button>
+            </div>
+            <p>{formatCurrency(product.quantity * product.price)}</p>
           </Body>
         ))
       )}
