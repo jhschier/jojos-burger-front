@@ -1,14 +1,17 @@
 import React from 'react'
 
 import CartCover from '../../assets/homecover.jpg'
-import { Footer, CartItems } from '../../components'
-import { Container, CoverImg } from './styles'
+import { Footer, CartItems, CartResume } from '../../components'
+import { Container, CoverImg, Wrapper } from './styles'
 
 export function Cart() {
   return (
     <Container>
       <CoverImg src={CartCover} />
-      <CartItems />
+      <Wrapper>
+        <CartItems />
+        <CartResume />
+      </Wrapper>
       <Footer />
     </Container>
   )

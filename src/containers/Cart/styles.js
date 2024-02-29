@@ -9,3 +9,7 @@ export const Container = styled.div`
 export const CoverImg = styled.img`
   width: 100%;
 `
+export const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+`

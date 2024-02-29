@@ -9,7 +9,8 @@ import {
   Body,
   EmptyCart,
   ProductImage,
-  ImageContainer
+  ImageContainer,
+  ContainerEmptyCart
 } from './styles'
 
 export function CartItems() {
@@ -30,7 +31,9 @@ export function CartItems() {
         </Header>
       )}
       {isCartEmpty ? (
-        <EmptyCart> The cart is empty </EmptyCart>
+        <ContainerEmptyCart>
+          <EmptyCart> The cart is empty </EmptyCart>
+        </ContainerEmptyCart>
       ) : (
         cartProducts.map(product => (
           <Body key={product.id}>

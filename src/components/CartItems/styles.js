@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  background-color: #ffffff;
+  background-color: #ede8d5;
   box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.03);
   border-radius: 20px;
   padding: 10px;
@@ -43,7 +43,7 @@ export const Body = styled.div`
     }
 
     img {
-      width: 25px;
+      width: 20px;
       margin-left: 40px;
     }
   }
@@ -77,4 +77,7 @@ export const EmptyCart = styled.p`
   font-size: 15px;
   font-weight: bold;
   color: #422800;
+`
+export const ContainerEmptyCart = styled.p`
+  width: 500px;
 `
