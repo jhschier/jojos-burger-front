@@ -52,7 +52,7 @@ export function Header() {
           <img src={UserLogo} style={{ width: '25px' }} alt="user-logo" />
         </PageLink>
         <ContainerText>
-          <p>Welcome User!</p>
+          <p>Welcome {}!</p>
           <PageLinkExit onClick={logoutUser}>Logout</PageLinkExit>
         </ContainerText>
       </ContainerRight>

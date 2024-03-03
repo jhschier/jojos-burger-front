@@ -46,7 +46,7 @@ export const ContainerText = styled.div`
 
 export const Line = styled.div`
   height: 40px;
-  border-right: 0.5px solid #bababa;
+  border-right: 0.5px solid #000;
 `
 
 export const PageLinkExit = styled.div`

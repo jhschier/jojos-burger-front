@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React, { useEffect, useState } from 'react'
 
 import ProductsCover from '../../assets/productsCover.jpg'
@@ -12,11 +13,15 @@ import {
   ContainerProducts
 } from './styles'
 
-export function Products() {
+export function Products({ location: { state } }) {
+  let categoryId = 0
+  if (state?.categoryId) {
+    categoryId = state.categoryId
+  }
   const [categories, setCategories] = useState([])
   const [products, setProducts] = useState([])
   const [filteredProducts, setFilteredProdutcs] = useState([])
-  const [activeCategory, setActiveCategory] = useState([0])
+  const [activeCategory, setActiveCategory] = useState(categoryId)
 
   useEffect(() => {
     async function loadCategories() {
@@ -77,4 +82,8 @@ export function Products() {
       </ContainerProducts>
     </Container>
   )
+}
+
+Products.propTypes = {
+  location: PropTypes.object
 }
