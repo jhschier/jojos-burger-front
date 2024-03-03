@@ -21,6 +21,11 @@ export const PageLink = styled.a`
   color: #422800;
   font-size: 16px;
   line-height: 19px;
+  border-bottom: ${props => (props.isActive ? '1px solid #422800' : 'none')};
+  &:hover {
+    font-size: 17px;
+    transition: 0.2s ease-in-out;
+  }
 `
 
 export const ContainerRight = styled.div`
@@ -52,4 +57,9 @@ export const PageLinkExit = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
+
+  &:hover {
+    font-size: 15px;
+    transition: 0.2s ease-in;
+  }
 `

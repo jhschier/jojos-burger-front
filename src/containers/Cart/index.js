@@ -1,7 +1,7 @@
 import React from 'react'
 
 import CartCover from '../../assets/homecover.jpg'
-import { Footer, CartItems, CartResume } from '../../components'
+import { CartItems, CartResume } from '../../components'
 import { Container, CoverImg, Wrapper } from './styles'
 
 export function Cart() {
@@ -12,7 +12,6 @@ export function Cart() {
         <CartItems />
         <CartResume />
       </Wrapper>
-      <Footer />
     </Container>
   )
 }

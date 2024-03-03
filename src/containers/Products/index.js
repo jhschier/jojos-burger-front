@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 import ProductsCover from '../../assets/productsCover.jpg'
-import { CardProduct, Footer } from '../../components'
+import { CardProduct } from '../../components'
 import api from '../../services/api'
 import formatCurrency from '../../utils/formatCurrency'
 import {
@@ -75,7 +75,6 @@ export function Products() {
             <CardProduct key={product.id} product={product} />
           ))}
       </ContainerProducts>
-      <Footer />
     </Container>
   )
 }

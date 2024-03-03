@@ -1,12 +1,7 @@
 import React from 'react'
 
 import HomeCover from '../../assets/homecover.jpg'
-import {
-  CategoryCarousel,
-  OffersCarousel,
-  Footer,
-  Header
-} from '../../components'
+import { CategoryCarousel, OffersCarousel } from '../../components'
 import { Container, CoverImg } from './styles'
 
 export function Home() {
@@ -16,11 +11,9 @@ export function Home() {
         backgroundColor: '#000000'
       }}
     >
-      <Header />
       <CoverImg src={HomeCover} />
       <CategoryCarousel />
       <OffersCarousel />
-      <Footer />
     </Container>
   )
 }
