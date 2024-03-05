@@ -79,9 +79,14 @@ export function Login() {
         throw new Error()
       }
       putUserData(data)
+      console.log(data)
 
       setInterval(() => {
-        history.push('/')
+        if (data.admin) {
+          history.push('/orders')
+        } else {
+          history.push('/')
+        }
       }, 1500)
     } catch (err) {
       toast.error('An error has occurred. Please try again later.', {
