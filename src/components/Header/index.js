@@ -26,7 +26,6 @@ export function Header() {
     push('/login')
   }
 
-  console.log(userData)
   return (
     <Container>
       <ContainerLeft>
