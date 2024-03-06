@@ -12,7 +12,7 @@ function PrivateRoute({ component, isAdmin, ...rest }) {
   }
 
   if (isAdmin && !JSON.parse(user).admin) {
-    return <Redirect to="/" />
+    return <Redirect to="/orders" />
   }
 
   return (

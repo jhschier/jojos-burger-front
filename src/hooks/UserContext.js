@@ -14,6 +14,7 @@ export const UserProvider = ({ children }) => {
 
   const logout = async () => {
     await localStorage.removeItem('jojosburger:userData')
+    location.reload()
   }
 
   useEffect(() => {
