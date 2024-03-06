@@ -1,3 +1,5 @@
+import CancelIcon from '@mui/icons-material/Cancel'
+import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -10,7 +12,7 @@ import { useEffect, useState } from 'react'
 
 import api from '../../../services/api'
 import formatCurrency from '../../../utils/formatCurrency'
-import { Container } from './styles'
+import { Container, Img, EditIconImg } from './styles'
 
 export function ListProducts() {
   const [products, setProducts] = useState([])
@@ -22,6 +24,13 @@ export function ListProducts() {
     }
     loadProducts()
   }, [])
+
+  function isOffer(offerStatus) {
+    if (offerStatus) {
+      return <CheckCircleIcon style={{ color: '#00AA00' }} />
+    }
+    return <CancelIcon style={{ color: '#CC1717' }} />
+  }
   return (
     <Container>
       <TableContainer component={Paper}>
@@ -30,8 +39,8 @@ export function ListProducts() {
             <TableRow>
               <TableCell>Product</TableCell>
               <TableCell>Price</TableCell>
-              <TableCell>Offer</TableCell>
-              <TableCell></TableCell>
+              <TableCell align="center">Offer</TableCell>
+              <TableCell align="center">Image</TableCell>
               <TableCell>Edit</TableCell>
             </TableRow>
           </TableHead>
@@ -45,16 +54,12 @@ export function ListProducts() {
                   {product.name}
                 </TableCell>
                 <TableCell>{formatCurrency(product.price)}</TableCell>
-                <TableCell>{product.offer}</TableCell>
-                <TableCell>
-                  <img
-                    src={product.url}
-                    style={{ maxWidth: '100px' }}
-                    alt="product-image"
-                  />
+                <TableCell align="center">{isOffer(product.offer)}</TableCell>
+                <TableCell align="center">
+                  <Img src={product.url} alt="product-image" />
                 </TableCell>
                 <TableCell>
-                  <button></button>
+                  <EditIconImg />
                 </TableCell>
               </TableRow>
             ))}
