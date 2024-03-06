@@ -13,10 +13,11 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import api from '../../../services/api'
+import formatCurrency from '../../../utils/formatCurrency'
 import status from './order-status'
 import { ProductImg, ReactSelectStyle } from './styles'
 
-function Row({ row }) {
+function Row({ row, orders, setOrders }) {
   const [open, setOpen] = React.useState(false)
   const [isLoading, setIsLoading] = React.useState(false)
 
@@ -24,6 +25,11 @@ function Row({ row }) {
     setIsLoading(true)
     try {
       await api.put(`orders/${id}`, { status })
+
+      const newOrders = orders.map(order => {
+        return order._id === id ? { ...order, status } : order
+      })
+      setOrders(newOrders)
     } catch (err) {
     } finally {
       setIsLoading(false)
@@ -48,7 +54,7 @@ function Row({ row }) {
         <TableCell>{row.date}</TableCell>
         <TableCell>
           <ReactSelectStyle
-            options={status}
+            options={status.filter(status => status.value !== 'All')}
             menuPortalTarget={document.body}
             style={{ fontFamily: 'Arial' }}
             placeholder="Status"
@@ -77,6 +83,7 @@ function Row({ row }) {
                     <TableCell>Amount</TableCell>
                     <TableCell>Product</TableCell>
                     <TableCell>Category</TableCell>
+                    <TableCell>Total price (€)</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -90,6 +97,9 @@ function Row({ row }) {
                       </TableCell>
                       <TableCell>{productRow.name}</TableCell>
                       <TableCell>{productRow.category}</TableCell>
+                      <TableCell>
+                        {formatCurrency(productRow.quantity * productRow.price)}
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -103,6 +113,8 @@ function Row({ row }) {
 }
 
 Row.propTypes = {
+  orders: PropTypes.array,
+  setOrders: PropTypes.func,
   row: PropTypes.shape({
     name: PropTypes.string.isRequired,
     orderId: PropTypes.string.isRequired,
