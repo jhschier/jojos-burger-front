@@ -1,4 +1,5 @@
 const status = [
+  { id: 0, label: 'All', value: 'All' },
   {
     id: 1,
     label: 'Order Processed',

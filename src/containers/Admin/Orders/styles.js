@@ -17,3 +17,19 @@ export const ReactSelectStyle = styled(ReactSelect)`
     cursor: pointer;
   }
 `
+
+export const Menu = styled.div`
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  margin: 20px 0;
+`
+
+export const LinkMenu = styled.a`
+  color: #323d5d;
+  cursor: pointer;
+  font-weight: ${props => (props.isActiveStatus ? 'bold' : 'none')};
+  border-bottom: ${props =>
+    props.isActiveStatus ? '2px solid #323d5d' : 'none'};
+  padding-bottom: 5px;
+`
