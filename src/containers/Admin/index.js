@@ -4,6 +4,7 @@ import React from 'react'
 import { SideMenuAdmin } from '../../components'
 import paths from '../../constants/paths'
 import ListProducts from './ListProducts'
+import NewProduct from './NewProducts'
 import Orders from './Orders'
 import { Container, ContainerItems } from './styles'
 export function Admin({ match: { path } }) {
@@ -13,6 +14,7 @@ export function Admin({ match: { path } }) {
       <ContainerItems>
         {path === paths.Order && <Orders />}
         {path === paths.Products && <ListProducts />}
+        {path === paths.NewProduct && <NewProduct />}
       </ContainerItems>
     </Container>
   )

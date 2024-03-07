@@ -1,6 +1,6 @@
 import LogoutIcon from '@mui/icons-material/Logout'
 import PropTypes from 'prop-types'
-import React, { useState } from 'react'
+import React from 'react'
 
 import { useUser } from '../../hooks/UserContext'
 import listLinks from './menu-list'

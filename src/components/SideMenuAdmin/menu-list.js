@@ -16,6 +16,12 @@ const listLinks = [
     label: 'List Products',
     link: paths.Products,
     icon: ShoppingCartIcon
+  },
+  {
+    id: 3,
+    label: 'New Product',
+    link: paths.NewProduct,
+    icon: AddShoppingCartIcon
   }
 ]
 
