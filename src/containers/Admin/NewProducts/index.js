@@ -2,7 +2,9 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import UploadIcon from '@mui/icons-material/Upload'
 import React, { useEffect, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
+import { useHistory } from 'react-router-dom/'
 import ReactSelect from 'react-select'
+import { toast } from 'react-toastify'
 import * as Yup from 'yup'
 
 import { ErrorMessage } from '../../../components'
@@ -12,6 +14,8 @@ import { Container, Label, Input, Button, LabelUpload } from './styles'
 export function NewProduct() {
   const [fileName, setFileName] = useState(null)
   const [categories, setCategories] = useState([])
+
+  const { push } = useHistory()
 
   const schema = Yup.object().shape({
     name: Yup.string().required('The product must have a name.'),
@@ -36,7 +40,19 @@ export function NewProduct() {
   const onSubmit = async data => {
     const productDataFormData = new FormData()
 
-    console.log(data)
+    productDataFormData.append('name', data.name)
+    productDataFormData.append('price', data.price)
+    productDataFormData.append('category_id', data.category.id)
+    productDataFormData.append('file', data.file[0])
+
+    await toast.promise(api.post('/products', productDataFormData), {
+      pending: 'Creating new product...',
+      success: 'Product was successfully created.',
+      error: 'Error while creating product, try again later...'
+    })
+    setTimeout(() => {
+      push('/list-products')
+    }, 2000)
   }
 
   useEffect(() => {
