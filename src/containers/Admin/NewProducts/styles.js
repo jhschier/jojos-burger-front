@@ -9,15 +9,17 @@ export const Container = styled.div`
 
   form {
     background: #565656;
-    border-radius: 5px;
+    border-radius: 10px;
     padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
   }
 `
 
 export const Label = styled.p`
   font-size: 15px;
   color: #ffffff;
-  margin-bottom: 5px;
 `
 
 export const Input = styled.input`
@@ -25,10 +27,10 @@ export const Input = styled.input`
   border-radius: 8px;
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.1);
-  margin-bottom: 25px;
+
   width: 100%;
   min-width: 280px;
-  padding: 5px;
+  padding-left: 5px;
 `
 
 export const Button = styled.button`
@@ -46,7 +48,7 @@ export const LabelUpload = styled.label`
   border: 1px dashed #ffffff;
   border-radius: 5px;
   padding: 10px;
-  margin-bottom: 25px;
+
   height: 50px;
   gap: 10px;
 
