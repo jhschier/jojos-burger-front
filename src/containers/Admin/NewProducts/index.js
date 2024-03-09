@@ -1,6 +1,6 @@
 import UploadIcon from '@mui/icons-material/Upload'
 import React, { useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import ReactSelect from 'react-select'
 
 import api from '../../../services/api'
@@ -8,16 +8,20 @@ import { Container, Label, Input, Button, LabelUpload } from './styles'
 
 export function NewProduct() {
   const [fileName, setFileName] = useState(null)
-  const { register, handleSubmit } = useForm()
+  const [categories, setCategories] = useState([])
+  const { register, handleSubmit, control } = useForm()
   const onSubmit = data => console.log(data)
   useEffect(() => {
-    async function createProduct() {
-      const { data } = await api.post('products')
+    async function loadCategories() {
+      const { data } = await api.get('categories')
+      console.log(data)
+      setCategories(data)
     }
+    loadCategories()
   }, [])
   return (
     <Container>
-      <form noValidate>
+      <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <Label>Name</Label>
         <Input type="text" {...register('name')} />
 
@@ -41,9 +45,21 @@ export function NewProduct() {
             }}
           />
         </LabelUpload>
-
-        <ReactSelect />
-
+        <Controller
+          name="category_id"
+          control={control}
+          render={({ field }) => {
+            return (
+              <ReactSelect
+                {...field}
+                options={categories}
+                getOptionLabel={cat => cat.name}
+                getOptionValue={cat => cat.id}
+                placeholder="Select Category"
+              />
+            )
+          }}
+        ></Controller>
         <Button>Add Product</Button>
       </form>
     </Container>
