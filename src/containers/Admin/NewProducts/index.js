@@ -19,10 +19,10 @@ export function NewProduct() {
     category: Yup.object().required('You must choose a category.'),
     file: Yup.mixed()
       .test('required', 'Upload an image.', value => {
-        return value && value.length > 0
+        return value?.length > 0
       })
       .test('fileSize', 'File size is too big.', value => {
-        return value && value[0].size <= 200000
+        return value[0]?.size <= 200000
       })
   })
 
@@ -33,7 +33,11 @@ export function NewProduct() {
     formState: { errors }
   } = useForm({ resolver: yupResolver(schema) })
 
-  const onSubmit = data => console.log(data)
+  const onSubmit = async data => {
+    const productDataFormData = new FormData()
+
+    console.log(data)
+  }
 
   useEffect(() => {
     async function loadCategories() {
