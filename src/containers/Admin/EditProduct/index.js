@@ -9,7 +9,14 @@ import * as Yup from 'yup'
 
 import { ErrorMessage } from '../../../components'
 import api from '../../../services/api'
-import { Container, Label, Input, Button, LabelUpload } from './styles'
+import {
+  Container,
+  Label,
+  Input,
+  Button,
+  LabelUpload,
+  ContainerInput
+} from './styles'
 
 export function EditProduct() {
   const [fileName, setFileName] = useState(null)
@@ -27,13 +34,7 @@ export function EditProduct() {
     name: Yup.string().required('The product must have a name.'),
     price: Yup.string().required('The product must have a price.'),
     category: Yup.object().required('You must choose a category.'),
-    file: Yup.mixed()
-      .test('required', 'Upload an image.', value => {
-        return value?.length > 0
-      })
-      .test('fileSize', 'File size is too big.', value => {
-        return value[0]?.size <= 200000
-      })
+    offer: Yup.bool()
   })
 
   const {
@@ -50,12 +51,16 @@ export function EditProduct() {
     productDataFormData.append('price', data.price)
     productDataFormData.append('category_id', data.category.id)
     productDataFormData.append('file', data.file[0])
+    productDataFormData.append('offer', data.offer)
 
-    await toast.promise(api.post('/products', productDataFormData), {
-      pending: 'Creating new product...',
-      success: 'Product was successfully created.',
-      error: 'Error while creating product, try again later...'
-    })
+    await toast.promise(
+      api.put(`products/${product.id}`, productDataFormData),
+      {
+        pending: 'Editing product...',
+        success: 'Product was successfully edited.',
+        error: 'Error while editing product, try again later...'
+      }
+    )
     setTimeout(() => {
       push('/list-products')
     }, 2000)
@@ -75,16 +80,22 @@ export function EditProduct() {
       <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <div>
           <Label>Name</Label>
-          <Input type="text" {...register('name')} />
+          <Input
+            type="text"
+            {...register('name')}
+            defaultValue={product.name}
+          />
           <ErrorMessage>{errors.name?.message}</ErrorMessage>
         </div>
-
         <div>
           <Label>Price</Label>
-          <Input type="number" {...register('price')} />
+          <Input
+            type="number"
+            {...register('price')}
+            defaultValue={product.price}
+          />
           <ErrorMessage>{errors.price?.message}</ErrorMessage>
         </div>
-
         <div>
           <LabelUpload>
             {fileName || (
@@ -107,6 +118,7 @@ export function EditProduct() {
           <Controller
             name="category"
             control={control}
+            defaultValue={product.category}
             render={({ field }) => {
               return (
                 <ReactSelect
@@ -115,13 +127,25 @@ export function EditProduct() {
                   getOptionLabel={cat => cat.name}
                   getOptionValue={cat => cat.id}
                   placeholder="Select Category"
+                  defaultValue={product.category}
                 />
               )
             }}
           ></Controller>
           <ErrorMessage>{errors.category?.message}</ErrorMessage>
         </div>
-        <Button>Add Product</Button>
+
+        <ContainerInput>
+          {' '}
+          <input
+            type="checkbox"
+            defaultChecked={product.offer}
+            {...register('offer')}
+          />{' '}
+          <Label>Offer?</Label>{' '}
+        </ContainerInput>
+
+        <Button>Edit Product</Button>
       </form>
     </Container>
   )
