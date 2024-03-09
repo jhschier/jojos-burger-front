@@ -7,7 +7,7 @@ import * as Yup from 'yup'
 
 import bgHome from '../../assets/bg-home.jpg'
 import RegisterImg from '../../assets/signup-body.svg'
-import { Button } from '../../components'
+import { Button, ErrorMessage } from '../../components'
 import api from '../../services/api'
 import {
   RegisterImage,
@@ -18,7 +18,6 @@ import {
   H1Login,
   Label,
   Input,
-  ErrorMessage,
   SignInLink
 } from './styles'
 

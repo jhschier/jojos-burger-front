@@ -30,13 +30,6 @@ export const ContainerItems = styled.div`
     flex-direction: column;
   }
 `
-export const ErrorMessage = styled.p`
-  color: #cc1717;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 0.875rem;
-  margin-bottom: 0.625rem;
-`
 
 export const JoJosLogo = styled.img``
 

@@ -7,7 +7,7 @@ import * as Yup from 'yup'
 
 import bgHome from '../../assets/bg-home.jpg'
 import LoginImg from '../../assets/login-body.svg'
-import { Button } from '../../components'
+import { Button, ErrorMessage } from '../../components'
 import { useUser } from '../../hooks/UserContext'
 import api from '../../services/api'
 import {
@@ -19,7 +19,6 @@ import {
   H1Login,
   Label,
   Input,
-  ErrorMessage,
   SignInLink
 } from './styles'
 
@@ -79,7 +78,6 @@ export function Login() {
         throw new Error()
       }
       putUserData(data)
-      console.log(data)
 
       setInterval(() => {
         if (data.admin) {
