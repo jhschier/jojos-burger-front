@@ -1,17 +1,16 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { toast, Bounce } from 'react-toastify'
 import * as Yup from 'yup'
 
 import bgHome from '../../assets/bg-home.jpg'
-import LoginImg from '../../assets/login-body.svg'
+import RegisterImg from '../../assets/signup-body.svg'
 import { Button, ErrorMessage } from '../../components'
-import { useUser } from '../../hooks/UserContext'
 import api from '../../services/api'
 import {
-  LoginImage,
+  RegisterImage,
   Container,
   ContainerItems,
   HeaderName,
@@ -22,15 +21,20 @@ import {
   SignInLink
 } from './styles'
 
-export function Login() {
-  const { putUserData } = useUser()
-  const history = useHistory()
-
+export function Register() {
   const schema = Yup.object().shape({
+    name: Yup.string('Please inform your name.').required(
+      'The name is required.'
+    ),
     email: Yup.string()
       .email('Please inform a valid e-mail.')
       .required('The e-email is required.'),
-    password: Yup.string().required('The password is required.')
+    password: Yup.string()
+      .min(6, 'The password must contain at least 6 characters.')
+      .required('The password is required.'),
+    confirmPassword: Yup.string()
+      .required('You must confirm your password.')
+      .oneOf([Yup.ref('password')], 'The passwords must match.')
   })
   const {
     register,
@@ -40,19 +44,19 @@ export function Login() {
 
   const onSubmit = async clientData => {
     try {
-      const { status, data } = await api.post(
-        'sessions',
+      const { status } = await api.post(
+        'users',
         {
+          name: clientData.name,
           email: clientData.email,
-          password: clientData.password
+          password: clientData.password,
+          confirmPassword: clientData.confirmPassword
         },
-        {
-          validateStatus: () => true
-        }
+        { validateStatus: () => true }
       )
 
       if (status === 200 || status === 201) {
-        toast.success('Welcome! :)', {
+        toast.success('Signed up successfully!', {
           position: 'top-center',
           autoClose: 2000,
           hideProgressBar: false,
@@ -62,13 +66,12 @@ export function Login() {
           theme: 'dark',
           transition: Bounce
         })
-      } else if (status === 401) {
-        toast.error('Incorrect e-mail or password.', {
+      } else if (status === 409) {
+        toast.error('This e-mail is already in use!', {
           position: 'top-center',
           autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
-          pauseOnHover: true,
           draggable: true,
           progress: undefined,
           theme: 'dark',
@@ -77,22 +80,12 @@ export function Login() {
       } else {
         throw new Error()
       }
-      putUserData(data)
-
-      setInterval(() => {
-        if (data.admin) {
-          history.push('/orders')
-        } else {
-          history.push('/')
-        }
-      }, 1500)
     } catch (err) {
-      toast.error('An error has occurred. Please try again later.', {
+      toast.error('An error occurred. Please try again later.', {
         position: 'top-center',
         autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
         draggable: true,
         progress: undefined,
         theme: 'dark',
@@ -100,10 +93,9 @@ export function Login() {
       })
     }
   }
-
   return (
     <Container>
-      <LoginImage src={LoginImg} alt="login-image" />
+      <RegisterImage src={RegisterImg} alt="login-image" />
 
       <ContainerItems
         style={{
@@ -115,9 +107,15 @@ export function Login() {
       >
         <HeaderName>JoJo&apos;s</HeaderName>
         <HeaderBurger>Burger</HeaderBurger>
-
-        <H1Login>Login</H1Login>
+        <H1Login>Register</H1Login>
         <form noValidate onSubmit={handleSubmit(onSubmit)}>
+          <Label>Name</Label>
+          <Input
+            type="text"
+            {...register('name')}
+            error={errors.name?.message}
+          />
+          <ErrorMessage>{errors.name?.message}</ErrorMessage>
           <Label>Email</Label>
           <Input
             type="email"
@@ -133,16 +131,23 @@ export function Login() {
             error={errors.password?.message}
           />
           <ErrorMessage>{errors.password?.message}</ErrorMessage>
+          <Label>Confirm Password</Label>
+          <Input
+            type="password"
+            {...register('confirmPassword')}
+            error={errors.confirmPassword?.message}
+          />
+          <ErrorMessage>{errors.confirmPassword?.message}</ErrorMessage>
 
           <Button
             type="submit"
-            style={{ marginTop: '4.1875rem', marginBottom: '1.8125rem' }}
+            style={{ marginTop: '1.875rem', marginBottom: '1.8125rem' }}
           >
-            Sign In
+            Sign Up
           </Button>
         </form>
         <SignInLink>
-          Don&apos;t have an account? <Link to="/register">Sign Up!</Link>{' '}
+          Already have an account? <Link to="/login">Sign in!</Link>{' '}
         </SignInLink>
       </ContainerItems>
     </Container>

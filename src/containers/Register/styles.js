@@ -9,7 +9,7 @@ export const Container = styled.div`
 `
 export const ContainerTitle = styled.div``
 
-export const LoginImage = styled.img`
+export const RegisterImage = styled.img`
   height: 100vh;
   flex: 1;
   object-fit: cover;
@@ -62,6 +62,7 @@ export const HeaderBurger = styled.h1`
 
 export const Label = styled.p`
   font-size: 0.75rem;
+
   font-weight: 500;
   color: #fbeee0;
   line-height: 0.875rem;
