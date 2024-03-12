@@ -81,7 +81,7 @@ export const Button = styled.button`
 export const H2Offers = styled.h2`
   font-family: 'Merienda', cursive;
   font-size: 50px;
-  margin: 10px;
+  margin: 15px;
   text-align: center;
   color: #fbeee0;
 `

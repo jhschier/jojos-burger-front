@@ -7,6 +7,8 @@ export const Container = styled.div`
 
 export const CoverImg = styled.img`
   width: 100%;
+  border-bottom: 1px solid #fbeee0;
+  margin-bottom: 10px;
 `
 export const Wrapper = styled.div`
   display: flex;

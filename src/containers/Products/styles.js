@@ -7,6 +7,7 @@ export const Container = styled.div`
 
 export const CoverImg = styled.img`
   width: 100%;
+  border-bottom: 1px solid #fbeee0;
 `
 
 export const ContainerCategory = styled.div`
@@ -28,6 +29,8 @@ export const CategoryButton = styled.button`
   padding-bottom: 5px;
   color: ${props => (props.isActiveCategory ? '#fbeee0' : '#9a9a9d')};
   border-bottom: ${props => props.isActiveCategory && '2px solid #fbeee0'};
+
+  margin-bottom: 10px;
 `
 
 export const ContainerProducts = styled.div`
