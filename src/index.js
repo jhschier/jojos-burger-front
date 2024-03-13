@@ -8,11 +8,13 @@ import GlobalStyles from './styles/globalStyles'
 
 const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-  <>
-    <AppProvider>
-      <Routes />
-    </AppProvider>
-    <ToastContainer />
-    <GlobalStyles />
-  </>
+  <React.StrictMode>
+    <>
+      <AppProvider>
+        <Routes />
+      </AppProvider>
+      <GlobalStyles />
+      <ToastContainer />
+    </>
+  </React.StrictMode>
 )

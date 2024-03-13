@@ -5,9 +5,9 @@ import { CartProvider } from './CartContext'
 import { UserProvider } from './UserContext'
 
 const AppProvider = ({ children }) => (
-  <CartProvider>
-    <UserProvider>{children}</UserProvider>
-  </CartProvider>
+  <UserProvider>
+    <CartProvider>{children}</CartProvider>
+  </UserProvider>
 )
 
 AppProvider.propTypes = {

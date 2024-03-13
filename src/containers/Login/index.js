@@ -62,6 +62,15 @@ export function Login() {
           theme: 'dark',
           transition: Bounce
         })
+
+        putUserData(data)
+        setInterval(() => {
+          if (data.admin) {
+            history.push('/orders')
+          } else {
+            history.push('/')
+          }
+        }, 1500)
       } else if (status === 401) {
         toast.error('Incorrect e-mail or password.', {
           position: 'top-center',
@@ -77,15 +86,6 @@ export function Login() {
       } else {
         throw new Error()
       }
-      putUserData(data)
-
-      setInterval(() => {
-        if (data.admin) {
-          history.push('/orders')
-        } else {
-          history.push('/')
-        }
-      }, 1500)
     } catch (err) {
       toast.error('An error has occurred. Please try again later.', {
         position: 'top-center',

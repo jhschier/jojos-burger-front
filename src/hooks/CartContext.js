@@ -13,7 +13,7 @@ export const CartProvider = ({ children }) => {
   const putProductInCart = async product => {
     const cartIndex = cartProducts.findIndex(prd => prd.id === product.id)
 
-    let newCartProducts = cartProducts
+    let newCartProducts = []
     if (cartIndex >= 0) {
       newCartProducts = cartProducts
       newCartProducts[cartIndex].quantity =
