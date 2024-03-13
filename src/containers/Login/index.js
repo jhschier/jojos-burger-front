@@ -70,6 +70,7 @@ export function Login() {
           } else {
             history.push('/')
           }
+          history.go(0)
         }, 1500)
       } else if (status === 401) {
         toast.error('Incorrect e-mail or password.', {
