@@ -26,6 +26,12 @@ export function Header() {
     push('/login')
   }
 
+  const handleAdminClick = () => {
+    if (userData.admin) {
+      push('/admin')
+    }
+  }
+
   return (
     <Container>
       <ContainerLeft>
@@ -54,7 +60,7 @@ export function Header() {
             src={UserLogo}
             style={{ width: '25px' }}
             alt="user-logo"
-            onClick={() => push('/orders')}
+            onClick={handleAdminClick}
           />
         </PageLink>
         <ContainerText>
