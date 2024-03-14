@@ -28,7 +28,7 @@ export function Header() {
 
   const handleAdminClick = () => {
     if (userData.admin) {
-      push('/admin')
+      push('/orders')
     }
   }
 
