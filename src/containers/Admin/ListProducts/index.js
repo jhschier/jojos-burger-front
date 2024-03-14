@@ -10,10 +10,12 @@ import TableRow from '@mui/material/TableRow'
 import * as React from 'react'
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom/'
+import { toast } from 'react-toastify'
 
 import paths from '../../../constants/paths'
 import api from '../../../services/api'
 import formatCurrency from '../../../utils/formatCurrency'
+import { DeleteIcon } from '../ListCategories/styles'
 import { Container, Img, EditIconImg } from './styles'
 
 export function ListProducts() {
@@ -37,6 +39,14 @@ export function ListProducts() {
 
   function editProduct(product) {
     push(paths.EditProduct, { product })
+  }
+  const deleteProduct = async productId => {
+    await toast.promise(api.delete(`product/${productId}`), {
+      pending: 'Deleting Product...',
+      success: 'Product was successfully deleted.',
+      error: 'Error while deleting Product, try again later...'
+    })
+    setProducts(products.filter(prd => prd.id !== productId))
   }
   return (
     <Container>
@@ -68,6 +78,7 @@ export function ListProducts() {
                   </TableCell>
                   <TableCell>
                     <EditIconImg onClick={() => editProduct(product)} />
+                    <DeleteIcon onClick={() => deleteProduct(product.id)} />
                   </TableCell>
                 </TableRow>
               ))}
