@@ -47,6 +47,7 @@ export function ListCategories() {
               <TableCell>Category</TableCell>
               <TableCell align="center">Image</TableCell>
               <TableCell>Edit</TableCell>
+              <TableCell>Delete</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
