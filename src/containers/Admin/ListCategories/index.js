@@ -1,4 +1,3 @@
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -9,10 +8,11 @@ import TableRow from '@mui/material/TableRow'
 import * as React from 'react'
 import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom/'
+import { toast } from 'react-toastify'
 
 import paths from '../../../constants/paths'
 import api from '../../../services/api'
-import { Container, Img, EditIconImg } from './styles'
+import { Container, Img, EditIconImg, DeleteIcon } from './styles'
 
 export function ListCategories() {
   const { push } = useHistory()
@@ -31,12 +31,12 @@ export function ListCategories() {
   }
 
   const deleteCategory = async categoryId => {
-    try {
-      await api.delete(`categories/${categoryId}`)
-      setCategories(categories.filter(cat => cat.id !== categoryId))
-    } catch (error) {
-      console.error('Error deleting category:', error)
-    }
+    await toast.promise(await api.delete(`categories/${categoryId}`), {
+      pending: 'Deleting category...',
+      success: 'Category was successfully deleted.',
+      error: 'Error while deleting category, try again later...'
+    })
+    setCategories(categories.filter(cat => cat.id !== categoryId))
   }
   return (
     <Container>
@@ -67,7 +67,7 @@ export function ListCategories() {
                     <EditIconImg onClick={() => editCategory(categories)} />
                   </TableCell>
                   <TableCell>
-                    <DeleteForeverIcon onClick={() => deleteCategory(cat.id)} />
+                    <DeleteIcon onClick={() => deleteCategory(cat.id)} />
                   </TableCell>
                 </TableRow>
               ))}
