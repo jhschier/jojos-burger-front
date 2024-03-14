@@ -2,6 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom'
 import { toast, Bounce } from 'react-toastify'
 import * as Yup from 'yup'
 
@@ -22,6 +23,7 @@ import {
 } from './styles'
 
 export function Register() {
+  const { push } = useHistory()
   const schema = Yup.object().shape({
     name: Yup.string('Please inform your name.').required(
       'The name is required.'
@@ -52,7 +54,10 @@ export function Register() {
           password: clientData.password,
           confirmPassword: clientData.confirmPassword
         },
-        { validateStatus: () => true }
+        { validateStatus: () => true },
+        setTimeout(() => {
+          push('/login')
+        }, 2000)
       )
 
       if (status === 200 || status === 201) {
