@@ -1,3 +1,4 @@
+import HomeIcon from '@mui/icons-material/Home'
 import LogoutIcon from '@mui/icons-material/Logout'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -20,7 +21,7 @@ export function SideMenuAdmin({ path }) {
       ))}
       <hr></hr>
       <ItemContainer>
-        <LogoutIcon style={{ color: '#ffffff' }} />
+        <HomeIcon style={{ color: '#ffffff' }} />
         <ListLink to={'/'}>Home</ListLink>
       </ItemContainer>
 
