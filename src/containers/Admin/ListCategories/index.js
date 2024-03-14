@@ -31,7 +31,7 @@ export function ListCategories() {
   }
 
   const deleteCategory = async categoryId => {
-    await toast.promise(await api.delete(`categories/${categoryId}`), {
+    await toast.promise(api.delete(`categories/${categoryId}`), {
       pending: 'Deleting category...',
       success: 'Category was successfully deleted.',
       error: 'Error while deleting category, try again later...'
