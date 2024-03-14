@@ -33,6 +33,8 @@ export function EditCategory() {
   const onSubmit = async data => {
     const categoryDataFormData = new FormData()
 
+    console.log(categoryDataFormData)
+
     categoryDataFormData.append('name', data.name)
     categoryDataFormData.append('file', data.file[0])
 
