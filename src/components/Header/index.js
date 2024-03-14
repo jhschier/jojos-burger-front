@@ -50,7 +50,12 @@ export function Header() {
         </PageLink>
         <Line></Line>
         <PageLink>
-          <img src={UserLogo} style={{ width: '25px' }} alt="user-logo" />
+          <img
+            src={UserLogo}
+            style={{ width: '25px' }}
+            alt="user-logo"
+            onClick={() => push('/orders')}
+          />
         </PageLink>
         <ContainerText>
           <p>Welcome {userData.name}!</p>
