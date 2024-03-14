@@ -17,13 +17,9 @@ export function NewCategory() {
 
   const schema = Yup.object().shape({
     name: Yup.string().required('The Category must have a name.'),
-    file: Yup.mixed()
-      .test('required', 'Upload an image.', value => {
-        return value?.length > 0
-      })
-      .test('fileSize', 'File size is too big.', value => {
-        return value[0]?.size <= 200000
-      })
+    file: Yup.mixed().test('required', 'Upload an image.', value => {
+      return value?.length > 0
+    })
   })
 
   const {
