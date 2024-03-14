@@ -1,5 +1,7 @@
 import AddBoxIcon from '@mui/icons-material/AddBox'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
+import EditNoteIcon from '@mui/icons-material/EditNote'
+import ListIcon from '@mui/icons-material/List'
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 
@@ -24,7 +26,20 @@ const listLinks = [
     link: paths.NewProduct,
     icon: AddShoppingCartIcon
   },
-  { id: 4, label: 'New Category', link: paths.NewCategory, icon: AddBoxIcon }
+  { id: 4, label: 'New Category', link: paths.NewCategory, icon: AddBoxIcon },
+
+  {
+    id: 5,
+    label: 'List Categories',
+    link: paths.ListCategories,
+    icon: ListIcon
+  },
+  {
+    id: 6,
+    label: 'Edit Category',
+    link: paths.EditCategory,
+    icon: EditNoteIcon
+  }
 ]
 
 export default listLinks

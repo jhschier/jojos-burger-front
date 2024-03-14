@@ -3,7 +3,9 @@ const paths = {
   Products: '/list-products',
   EditProduct: '/edit-product',
   NewProduct: '/new-product',
-  NewCategory: '/new-category'
+  Categories: '/list-categories',
+  NewCategory: '/new-category',
+  EditCategory: '/edit-category'
 }
 
 export default paths
