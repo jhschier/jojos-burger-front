@@ -54,10 +54,7 @@ export function Register() {
           password: clientData.password,
           confirmPassword: clientData.confirmPassword
         },
-        { validateStatus: () => true },
-        setTimeout(() => {
-          push('/login')
-        }, 2000)
+        { validateStatus: () => true }
       )
 
       if (status === 200 || status === 201) {
@@ -71,6 +68,9 @@ export function Register() {
           theme: 'dark',
           transition: Bounce
         })
+        setTimeout(() => {
+          push('/login')
+        }, 2000)
       } else if (status === 409) {
         toast.error('This e-mail is already in use!', {
           position: 'top-center',
