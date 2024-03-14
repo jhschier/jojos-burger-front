@@ -1,6 +1,5 @@
 import AddBoxIcon from '@mui/icons-material/AddBox'
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart'
-import EditNoteIcon from '@mui/icons-material/EditNote'
 import ListIcon from '@mui/icons-material/List'
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
@@ -31,14 +30,8 @@ const listLinks = [
   {
     id: 5,
     label: 'List Categories',
-    link: paths.ListCategories,
+    link: paths.Categories,
     icon: ListIcon
-  },
-  {
-    id: 6,
-    label: 'Edit Category',
-    link: paths.EditCategory,
-    icon: EditNoteIcon
   }
 ]
 

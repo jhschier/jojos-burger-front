@@ -15,7 +15,7 @@ import { Container, Img, EditIconImg } from './styles'
 
 export function ListCategories() {
   const { push } = useHistory()
-  const [categories, setCategories] = useState()
+  const [categories, setCategories] = useState([])
   useEffect(() => {
     async function loadCategories() {
       const { data } = await api.get('categories')

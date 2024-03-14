@@ -20,7 +20,6 @@ export function EditCategory() {
     }
   } = useHistory()
 
-  console.log(category)
   const schema = Yup.object().shape({
     name: Yup.string().required('The product must have a name.')
   })
@@ -41,7 +40,7 @@ export function EditCategory() {
       api.put(`categories/${category.id}`, categoryDataFormData),
       {
         pending: 'Editing Category...',
-        success: 'Categorywas successfully edited.',
+        success: 'Category was successfully edited.',
         error: 'Error while editing category, try again later...'
       }
     )
