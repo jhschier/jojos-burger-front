@@ -16,7 +16,7 @@ export function NewCategory() {
   const { push } = useHistory()
 
   const schema = Yup.object().shape({
-    name: Yup.string().required('The product must have a name.'),
+    name: Yup.string().required('The Category must have a name.'),
     file: Yup.mixed()
       .test('required', 'Upload an image.', value => {
         return value?.length > 0
@@ -40,9 +40,9 @@ export function NewCategory() {
     categoryDataFormData.append('file', data.file[0])
 
     await toast.promise(api.post('/categories', categoryDataFormData), {
-      pending: 'Creating new product...',
-      success: 'Product was successfully created.',
-      error: 'Error while creating product, try again later...'
+      pending: 'Creating new category...',
+      success: 'Category was successfully created.',
+      error: 'Error while creating category, try again later...'
     })
     setTimeout(() => {
       push('/list-products')
@@ -78,7 +78,7 @@ export function NewCategory() {
           </LabelUpload>
           <ErrorMessage>{errors.file?.message}</ErrorMessage>
         </div>
-        <Button onSubmit={onSubmit()}>Add Category</Button>
+        <Button>Add Category</Button>
       </form>
     </Container>
   )
