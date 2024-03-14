@@ -5,7 +5,7 @@ const apiJoJosBurger = axios.create({
 })
 
 apiJoJosBurger.interceptors.request.use(async config => {
-  const userData = await localStorage.getItem('jojosburger:userData')
+  const userData = JSON.parse(localStorage.getItem('jojosburger:userData'))
   const token = userData && JSON.parse(userData).token
   config.headers.authorization = `Bearer ${token}`
 
