@@ -63,7 +63,7 @@ export function ListCategories() {
                     <Img src={cat.url} alt="product-image" />
                   </TableCell>
                   <TableCell>
-                    <EditIconImg onClick={() => editCategory(categories)} />
+                    <EditIconImg onClick={() => editCategory(cat.id)} />
                     <DeleteIcon onClick={() => deleteCategory(cat.id)} />
                   </TableCell>
                 </TableRow>
