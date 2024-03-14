@@ -21,13 +21,9 @@ export function NewProduct() {
     name: Yup.string().required('The product must have a name.'),
     price: Yup.string().required('The product must have a price.'),
     category: Yup.object().required('You must choose a category.'),
-    file: Yup.mixed()
-      .test('required', 'Upload an image.', value => {
-        return value?.length > 0
-      })
-      .test('fileSize', 'File size is too big.', value => {
-        return value[0]?.size <= 200000
-      })
+    file: Yup.mixed().test('required', 'Upload an image.', value => {
+      return value?.length > 0
+    })
   })
 
   const {
