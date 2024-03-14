@@ -46,8 +46,7 @@ export function ListCategories() {
             <TableRow>
               <TableCell>Category</TableCell>
               <TableCell align="center">Image</TableCell>
-              <TableCell>Edit</TableCell>
-              <TableCell>Delete</TableCell>
+              <TableCell>Edit/Delete</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -65,8 +64,6 @@ export function ListCategories() {
                   </TableCell>
                   <TableCell>
                     <EditIconImg onClick={() => editCategory(categories)} />
-                  </TableCell>
-                  <TableCell>
                     <DeleteIcon onClick={() => deleteCategory(cat.id)} />
                   </TableCell>
                 </TableRow>
