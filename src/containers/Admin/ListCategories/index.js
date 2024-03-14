@@ -1,3 +1,4 @@
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -28,6 +29,15 @@ export function ListCategories() {
   function editCategory(category) {
     push(paths.EditCategory, { category })
   }
+
+  const deleteCategory = async categoryId => {
+    try {
+      await api.delete(`categories/${categoryId}`)
+      setCategories(categories.filter(cat => cat.id !== categoryId))
+    } catch (error) {
+      console.error('Error deleting category:', error)
+    }
+  }
   return (
     <Container>
       <TableContainer component={Paper}>
@@ -54,6 +64,9 @@ export function ListCategories() {
                   </TableCell>
                   <TableCell>
                     <EditIconImg onClick={() => editCategory(categories)} />
+                  </TableCell>
+                  <TableCell>
+                    <DeleteForeverIcon onClick={() => deleteCategory(cat.id)} />
                   </TableCell>
                 </TableRow>
               ))}

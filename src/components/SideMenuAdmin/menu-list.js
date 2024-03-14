@@ -25,14 +25,14 @@ const listLinks = [
     link: paths.NewProduct,
     icon: AddShoppingCartIcon
   },
-  { id: 4, label: 'New Category', link: paths.NewCategory, icon: AddBoxIcon },
-
   {
-    id: 5,
+    id: 4,
     label: 'List Categories',
     link: paths.Categories,
     icon: ListIcon
-  }
+  },
+
+  { id: 5, label: 'New Category', link: paths.NewCategory, icon: AddBoxIcon }
 ]
 
 export default listLinks
