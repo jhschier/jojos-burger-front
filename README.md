@@ -30,6 +30,11 @@ This project was developed using the following technologies:
 - **Admin Dashboard:** Admins can log in to view and manage orders, check the product list, and add/edit products.
 - **Persistent Data:** User accounts, products, and categories are securely stored in a PostgreSQL database, while orders are maintained in a MongoDB database.
 
+## Deploy
+
+You can access the deployed version of JoJo's Burger application by following this link: [JoJo's Burger Deployed Version](https://jojos-burger-front.vercel.app/)
+
+
 ---
 
 **Happy ordering! 🍟🥤🎉**
