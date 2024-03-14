@@ -28,7 +28,7 @@ export function EditProduct() {
       state: { product }
     }
   } = useHistory()
-
+  console.log(useHistory())
   console.log(product)
   const schema = Yup.object().shape({
     name: Yup.string().required('The product must have a name.'),
