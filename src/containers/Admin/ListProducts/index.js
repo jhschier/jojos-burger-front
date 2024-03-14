@@ -58,7 +58,7 @@ export function ListProducts() {
               <TableCell>Price</TableCell>
               <TableCell align="center">Offer</TableCell>
               <TableCell align="center">Image</TableCell>
-              <TableCell>Edit</TableCell>
+              <TableCell>Edit/Delete</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
