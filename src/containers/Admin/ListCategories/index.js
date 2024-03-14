@@ -24,7 +24,7 @@ export function ListCategories() {
       setCategories(data)
     }
     loadCategories()
-  }, [categories])
+  }, [])
 
   function editCategory(category) {
     push(paths.EditCategory, { category })
