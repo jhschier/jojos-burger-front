@@ -41,7 +41,7 @@ export function NewCategory() {
       error: 'Error while creating category, try again later...'
     })
     setTimeout(() => {
-      push('/list-products')
+      push('/list-categories')
     }, 2000)
   }
 
