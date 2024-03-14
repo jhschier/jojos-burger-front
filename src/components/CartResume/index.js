@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { useCart } from '../../hooks/CartContext'
@@ -10,6 +11,8 @@ import { Container } from './styles'
 export function CartResume() {
   const [finalPrice, setFinalPrice] = useState(0)
   const [deliveryFee] = useState(3)
+
+  const { push } = useHistory()
 
   const { cartProducts } = useCart()
 
@@ -30,6 +33,9 @@ export function CartResume() {
       success: 'Order done! Food is on the way!',
       error: 'Error when processing request. Please try again later... :('
     })
+    setTimeout(() => {
+      push('/')
+    }, 2000)
   }
 
   return (
