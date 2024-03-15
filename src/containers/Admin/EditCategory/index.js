@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import UploadIcon from '@mui/icons-material/Upload'
-import React, { useState } from 'react'
+import PropTypes from 'prop-types'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useHistory } from 'react-router-dom/'
 import { toast } from 'react-toastify'
@@ -10,17 +11,23 @@ import { ErrorMessage } from '../../../components'
 import api from '../../../services/api'
 import { Container, Label, Input, Button, LabelUpload } from './styles'
 
-export function EditCategory() {
+export function EditCategory({ categoryId }) {
   const [fileName, setFileName] = useState(null)
+  const [category, setCategory] = useState(null)
+  const history = useHistory()
 
-  const {
-    push,
-    location: {
-      state: { category }
+  useEffect(() => {
+    async function fetchCategory() {
+      try {
+        const response = await api.get(`categories/${categoryId}`)
+        setCategory(response.data)
+      } catch (error) {
+        console.error('Error fetching categoty:', error)
+      }
     }
-  } = useHistory()
+    fetchCategory()
+  }, [categoryId])
 
-  console.log(useHistory())
   const schema = Yup.object().shape({
     name: Yup.string().required('The product must have a name.')
   })
@@ -48,7 +55,7 @@ export function EditCategory() {
       }
     )
     setTimeout(() => {
-      push('/list-categories')
+      history.push('/list-categories')
     }, 2000)
   }
 
@@ -92,3 +99,7 @@ export function EditCategory() {
 }
 
 export default EditCategory
+
+EditCategory.propTypes = {
+  categoryId: PropTypes.number.isRequired
+}
