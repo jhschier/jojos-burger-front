@@ -33,9 +33,10 @@ export function CartResume() {
       success: 'Order done! Food is on the way!',
       error: 'Error when processing request. Please try again later... :('
     })
-    clearCart()
+
     setTimeout(() => {
       push('/')
+      clearCart()
     }, 1000)
   }
 
