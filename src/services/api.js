@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const apiJoJosBurger = axios.create({
-  baseURL: 'http://localhost:3001'
+  baseURL: 'https://jojos-burger-production.up.railway.app'
 })
 
 apiJoJosBurger.interceptors.request.use(async config => {
