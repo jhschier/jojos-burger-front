@@ -16,10 +16,11 @@ export function CardProduct({ product }) {
   const { putProductInCart } = useCart()
 
   const handleAddToCart = () => {
-    setTimeout(() => {
-      putProductInCart(product)
-      toast.success('Item added to cart successfully')
-    }, 1000)
+    putProductInCart(product)
+    toast.success('Item added to cart successfully', {
+      autoClose: 1000,
+      theme: 'dark'
+    })
   }
   return (
     <Container>
