@@ -66,8 +66,6 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = async () => {
     setCartProducts([])
-
-    await updateLocalStorage([])
   }
 
   useEffect(() => {
