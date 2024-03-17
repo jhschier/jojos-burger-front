@@ -16,10 +16,10 @@ export function CardProduct({ product }) {
   const { putProductInCart } = useCart()
 
   const handleAddToCart = () => {
-    putProductInCart(product)
-    toast.success('Item added to cart successfully')
-
-    setTimeout(() => {}, 1000)
+    setTimeout(() => {
+      putProductInCart(product)
+      toast.success('Item added to cart successfully')
+    }, 1000)
   }
   return (
     <Container>
