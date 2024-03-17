@@ -84,6 +84,10 @@ export const H2Offers = styled.h2`
   margin: 15px;
   text-align: center;
   color: #fbeee0;
+
+  @media (max-width: 1215px) {
+    font-size: 30px;
+  }
 `
 
 export const OfferP = styled.p`

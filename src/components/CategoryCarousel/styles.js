@@ -73,7 +73,7 @@ export const Button = styled(Link)`
     transform: translate(2px, 2px);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 1215px) {
     & {
       min-width: 90px;
       padding: 0 25px;
@@ -87,4 +87,8 @@ export const H2Categories = styled.h2`
   margin: 10px;
   text-align: center;
   color: #fbeee0;
+
+  @media (max-width: 1215px) {
+    font-size: 30px;
+  }
 `

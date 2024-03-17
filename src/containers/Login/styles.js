@@ -4,8 +4,17 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
+
+  @media (min-width: 1216px) {
+    height: 100vh;
+  }
+
+  @media (max-width: 1215px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
 `
 export const ContainerTitle = styled.div``
 
@@ -13,6 +22,10 @@ export const LoginImage = styled.img`
   height: 100vh;
   flex: 1;
   object-fit: cover;
+
+  @media (max-width: 1215px) {
+    display: none;
+  }
 `
 
 export const ContainerItems = styled.div`
@@ -29,6 +42,11 @@ export const ContainerItems = styled.div`
     display: flex;
     flex-direction: column;
   }
+
+  @media (max-width: 1215px) {
+    width: 100vw;
+    padding: 1.5625rem;
+  }
 `
 
 export const JoJosLogo = styled.img``
@@ -44,6 +62,12 @@ export const H1Login = styled.p`
   line-height: normal;
   margin-top: 6.25rem;
   margin-bottom: 1rem;
+
+  @media (max-width: 1215px) {
+    margin-top: 20px;
+    font-size: 15px;
+    margin-bottom: 0;
+  }
 `
 
 export const HeaderName = styled.h2`
@@ -51,6 +75,10 @@ export const HeaderName = styled.h2`
   font-size: 50px;
   text-align: center;
   color: #fbeee0;
+
+  @media (max-width: 1215px) {
+    font-size: 30px;
+  }
 `
 
 export const HeaderBurger = styled.h1`
@@ -58,6 +86,10 @@ export const HeaderBurger = styled.h1`
   font-size: 4.375rem;
   text-align: center;
   color: #fbeee0;
+
+  @media (max-width: 1215px) {
+    font-size: 50px;
+  }
 `
 
 export const Label = styled.p`

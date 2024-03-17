@@ -1,4 +1,8 @@
-import React from 'react'
+import MenuIcon from '@mui/icons-material/Menu'
+import IconButton from '@mui/material/IconButton'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 import CartLogo from '../../assets/cart.png'
@@ -21,6 +25,16 @@ export function Header() {
     location: { pathname }
   } = useHistory()
 
+  const [anchorEl, setAnchorEL] = useState(null)
+
+  const handleClickIcon = event => {
+    setAnchorEL(event.currentTarget)
+  }
+
+  const handleCloseIcon = () => {
+    setAnchorEL(null)
+  }
+
   const logoutUser = () => {
     logout()
     push('/login')
@@ -35,15 +49,29 @@ export function Header() {
   return (
     <Container>
       <ContainerLeft>
-        <PageLink onClick={() => push('/')} isActive={pathname === '/'}>
-          Home
-        </PageLink>
-        <PageLink
-          onClick={() => push('/products')}
-          isActive={pathname.includes('/products')}
-        >
-          Products
-        </PageLink>
+        {window.innerWidth > 950 ? (
+          <>
+            <PageLink onClick={() => push('/')} isActive={pathname === '/'}>
+              Home
+            </PageLink>
+            <PageLink
+              onClick={() => push('/products')}
+              isActive={pathname.includes('/products')}
+            >
+              Products
+            </PageLink>
+          </>
+        ) : (
+          <IconButton
+            aria-label="menu"
+            aria-controls="basic-menu"
+            aria-haspopup="true"
+            onClick={handleClickIcon}
+            color="inherit"
+          >
+            <MenuIcon />
+          </IconButton>
+        )}
       </ContainerLeft>
       <ContainerRight>
         <PageLink>
@@ -68,6 +96,15 @@ export function Header() {
           <PageLinkExit onClick={logoutUser}>Logout</PageLinkExit>
         </ContainerText>
       </ContainerRight>
+      <Menu
+        id="basic-menu"
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        onClose={handleCloseIcon}
+      >
+        <MenuItem onClick={() => push('/')}>Home</MenuItem>
+        <MenuItem onClick={() => push('/products')}>Products</MenuItem>
+      </Menu>
     </Container>
   )
 }

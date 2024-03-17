@@ -20,8 +20,6 @@ export function EditCategory() {
     }
   } = useHistory()
 
-  console.log(useHistory())
-
   const schema = Yup.object().shape({
     name: Yup.string().required('The product must have a name.')
   })

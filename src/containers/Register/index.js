@@ -16,7 +16,7 @@ import {
   ContainerItems,
   HeaderName,
   HeaderBurger,
-  H1Login,
+  H1Register,
   Label,
   Input,
   SignInLink
@@ -112,7 +112,7 @@ export function Register() {
       >
         <HeaderName>JoJo&apos;s</HeaderName>
         <HeaderBurger>Burger</HeaderBurger>
-        <H1Login>Register</H1Login>
+        <H1Register>Register</H1Register>
         <form noValidate onSubmit={handleSubmit(onSubmit)}>
           <Label>Name</Label>
           <Input
