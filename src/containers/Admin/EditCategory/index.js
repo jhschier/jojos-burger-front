@@ -15,8 +15,12 @@ export function EditCategory() {
 
   const {
     push,
-    location: { category }
+    location: {
+      state: { category }
+    }
   } = useHistory()
+
+  console.log(useHistory())
 
   const schema = Yup.object().shape({
     name: Yup.string().required('The product must have a name.')
@@ -34,7 +38,7 @@ export function EditCategory() {
     console.log(categoryDataFormData)
 
     categoryDataFormData.append('name', data.name)
-    categoryDataFormData.append('category_id', data.category.id)
+    categoryDataFormData.append('categoryId', data.categoryId)
     categoryDataFormData.append('file', data.file[0])
 
     await toast.promise(
