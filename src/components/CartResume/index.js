@@ -14,7 +14,7 @@ export function CartResume() {
 
   const { push } = useHistory()
 
-  const { cartProducts } = useCart()
+  const { cartProducts, clearCart } = useCart()
 
   useEffect(() => {
     const sumPrice = cartProducts.reduce((acc, current) => {
@@ -33,9 +33,10 @@ export function CartResume() {
       success: 'Order done! Food is on the way!',
       error: 'Error when processing request. Please try again later... :('
     })
+    clearCart()
     setTimeout(() => {
       push('/')
-    }, 2000)
+    }, 1000)
   }
 
   return (
