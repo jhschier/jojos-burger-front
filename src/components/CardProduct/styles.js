@@ -8,6 +8,9 @@ export const Container = styled.div`
   gap: 12px;
   padding: 16px;
   width: max-content;
+  @media (max-width: 1215px) {
+    max-width: 400px;
+  }
 `
 
 export const ProductImage = styled.img`

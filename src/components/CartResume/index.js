@@ -55,7 +55,10 @@ export function CartResume() {
           </p>
         </div>
       </Container>
-      <Button style={{ width: '100%', marginTop: 30 }} onClick={submitOrder}>
+      <Button
+        style={{ width: '100%', marginTop: 30, marginBottom: 30 }}
+        onClick={submitOrder}
+      >
         Checkout
       </Button>
     </div>

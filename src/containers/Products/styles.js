@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
   background-color: #080806;
   min-height: calc(100vh - 80px);
+  padding-bottom: 20px;
 `
 
 export const CoverImg = styled.img`
@@ -18,6 +19,12 @@ export const ContainerCategory = styled.div`
   margin-top: 10px;
   margin-bottom: 20px;
   border-bottom: 1px solid #fbeee0;
+
+  @media (max-width: 1215px) {
+    flex-wrap: wrap;
+    padding: 10px;
+    gap: 10px;
+  }
 `
 
 export const CategoryButton = styled.button`
@@ -31,6 +38,10 @@ export const CategoryButton = styled.button`
   border-bottom: ${props => props.isActiveCategory && '2px solid #fbeee0'};
 
   margin-bottom: 10px;
+
+  @media (max-width: 1215px) {
+    font-size: 15px;
+  }
 `
 
 export const ContainerProducts = styled.div`
@@ -40,4 +51,9 @@ export const ContainerProducts = styled.div`
   padding: 40px;
   margin-top: 20px;
   justify-items: center;
+
+  @media (max-width: 1215px) {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 10px;
+  }
 `

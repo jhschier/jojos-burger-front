@@ -62,15 +62,34 @@ export function Header() {
             </PageLink>
           </>
         ) : (
-          <IconButton
-            aria-label="menu"
-            aria-controls="basic-menu"
-            aria-haspopup="true"
-            onClick={handleClickIcon}
-            color="inherit"
-          >
-            <MenuIcon />
-          </IconButton>
+          <>
+            <IconButton
+              aria-label="menu"
+              aria-controls="basic-menu"
+              aria-haspopup="true"
+              onClick={handleClickIcon}
+              color="inherit"
+            >
+              <MenuIcon />
+            </IconButton>
+
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={Boolean(anchorEl)}
+              onClose={handleCloseIcon}
+              slotProps={{
+                paper: {
+                  style: {
+                    backgroundColor: '#fbeee0'
+                  }
+                }
+              }}
+            >
+              <MenuItem onClick={() => push('/')}>Home</MenuItem>
+              <MenuItem onClick={() => push('/products')}>Products</MenuItem>
+            </Menu>
+          </>
         )}
       </ContainerLeft>
       <ContainerRight>
@@ -96,15 +115,6 @@ export function Header() {
           <PageLinkExit onClick={logoutUser}>Logout</PageLinkExit>
         </ContainerText>
       </ContainerRight>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={Boolean(anchorEl)}
-        onClose={handleCloseIcon}
-      >
-        <MenuItem onClick={() => push('/')}>Home</MenuItem>
-        <MenuItem onClick={() => push('/products')}>Products</MenuItem>
-      </Menu>
     </Container>
   )
 }

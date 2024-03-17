@@ -13,4 +13,9 @@ export const CoverImg = styled.img`
 export const Wrapper = styled.div`
   display: flex;
   justify-content: space-evenly;
+
+  @media (max-width: 1215px) {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
 `
