@@ -65,7 +65,9 @@ export const CartProvider = ({ children }) => {
   }
 
   const clearCart = async () => {
-    await localStorage.removeItem('jojosburger:cartInfo')
+    setCartProducts([])
+
+    await updateLocalStorage([])
   }
 
   useEffect(() => {
