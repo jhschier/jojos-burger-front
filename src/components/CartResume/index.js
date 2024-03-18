@@ -36,6 +36,7 @@ export function CartResume() {
 
     setTimeout(() => {
       push('/')
+      clearCart()
     }, 1000)
   }
 
