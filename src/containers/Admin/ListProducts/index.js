@@ -41,7 +41,7 @@ export function ListProducts() {
     push(paths.EditProduct, { product })
   }
   const deleteProduct = async productId => {
-    await toast.promise(api.delete(`product/${productId}`), {
+    await toast.promise(api.delete(`products/${productId}`), {
       pending: 'Deleting Product...',
       success: 'Product was successfully deleted.',
       error: 'Error while deleting Product, try again later...'
